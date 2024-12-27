@@ -1,3 +1,17 @@
+# Approach taken - (one-liner: we are matching every char entered in input to every char in para(which are rendered as individual span elements ,) using references of html el stored in useRef
+1. using useState hook with inital paragraph value - we are mapping over it after the splitting and generating span elments(with id as it index in array) and rendering in ui
+2. using useRef to store the refereces to of each span - we are later updating the color using the current prop of useRef
+3. again useRef to store the input value in input
+4. **for showing cursor** - using the getBoundClientRect() (https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) and also adding width of text content
+5. **for changing color** - updating css by using useRef ref
+6. **for wpm** - using state and conditional renderings
+
+
+
+
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
