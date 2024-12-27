@@ -2,12 +2,10 @@
 1. using useState hook with inital paragraph value - we are mapping over it after the splitting and generating span elments(with id as it index in array) and rendering in ui
 2. using useRef to store the refereces to of each span - we are later updating the color using the current prop of useRef
 3. again useRef to store the input value in input
-4. **for showing cursor** - using the getBoundClientRect() (https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) and also adding width of text content
+4. **for showing  and positioning cursor** - cursor shown by empty div(some width,height and color) focusing the getBoundClientRect() (https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) and also adding width of text content
 5. **for changing color** - updating css by using useRef ref
 6. **for wpm** - using state and conditional renderings
-
-
-
+7. role of setTimeout(0) - to run the onChange of input before the code inside timeout so that there is key on first key down- finishing onChange that is immediate after keydown(https://imdeveshshukla.medium.com/settimeout-with-time-0-explained-967f3133e305)
 
 
 
