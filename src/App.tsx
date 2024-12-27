@@ -1,22 +1,19 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 const CharList = () => {
-  const [paragraph, setParagraph] = useState(
-    "The quick brown fox jumps over the lazy dog"
-  );
+  const [paragraph] = useState("The quick brown fox jumps over the lazy dog"); //no need of setter not declaring it
   const [typingStarted, setTypingStarted] = useState(false);
   const [gameEnded, setGameEnded] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const typingStats = useRef({ startTime: 0, endTime: 0, wpm: 0 }); //using this so that it does not rerender when the we set the start time
-  const spanRefs = useRef<any>([]);
-  const inputRef = useRef("");
+  const spanRefs = useRef<any>([]); //has all the span reference in the current property , will use to manupulate the dom directly
+  const inputRef = useRef(""); //
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     //recording date.now on first key press
     if (!typingStarted) {
       typingStats.current.startTime = Date.now();
     }
-    setTypingStarted(true);
-
+    setTypingStarted(true); //condtionally rendering to show the cursor if game started
     //why setTimeout as on key down this fxn was rendering so inital value  of input was setting as nothing
     if (inputRef.current.length === spanRefs.current.length) {
       typingStats.current.endTime = Date.now();
@@ -24,20 +21,9 @@ const CharList = () => {
         typingStats.current.endTime - typingStats.current.startTime,
         paragraph.split(" ").length
       ); //using jit(just in time compilation)
-      console.log("ran the fxn");
-      setGameEnded(true);
+      setGameEnded(true); //conditional rendering of the restart btn and wpm
     }
     setTimeout(() => {
-      //check if this is (after last) char()
-
-      console.log(
-        "Current Value After KeyDown:",
-        inputRef.current,
-        spanRefs.current[inputRef.current.length - 1].textContent,
-        inputRef.current.length
-        //check the the value of span with id 0 at length of 1
-      );
-
       if (e.key === spanRefs.current[inputRef.current.length - 1].textContent) {
         spanRefs.current[inputRef.current.length - 1].style.color = "green";
       } else {
